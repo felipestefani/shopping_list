@@ -51,7 +51,7 @@
       <ul>
         <li v-for="(item) in list">
           <p :class="{risc: item.comprado}" @click="editar(item)" :key="item.id" v-if="item.ehTexto">{{ item.name }}</p>
-          <input :id=item.id type="text" v-model="item.name" :key="item.id" :hidden="item.ehTexto" @blur="item.ehTexto=!item.ehTexto" >
+          <input class="editando" :id=item.id type="text" v-model="item.name" :key="item.id" :hidden="item.ehTexto" @blur="item.ehTexto=!item.ehTexto" >
           <div class="icons">
             <i class="pi pi-check" style="color: green;" @click="riscar(item)" v-if="!item.comprado && editando"></i>
             <i class="pi pi-times" style="color: red" @click="riscar(item)" v-if="item.comprado && editando"></i>
@@ -129,6 +129,11 @@
     padding-left: 1em;
     background-color: rgb(243, 243, 243);
     margin-left: 1em;
+  }
+
+  .editando {
+    width: 70%;
+    margin-left: 0;
   }
 
   .primary {
